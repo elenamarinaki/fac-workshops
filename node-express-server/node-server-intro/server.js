@@ -25,6 +25,11 @@ server.get('/json', (request, response) => {
   response.send({ message: 'Hello' });
 });
 
+server.get('/users/:name', (request, response) => {
+  const name = request.params.name;
+  response.send(`<h1>Hello ${name}</h1>`);
+});
+
 const PORT = 3000;
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
