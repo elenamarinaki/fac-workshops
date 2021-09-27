@@ -2,10 +2,23 @@ const express = require('express');
 
 const server = express();
 
-server.get('/', (request, response) => {
-  // response.send('hello').status(404);
-  // response.status(404).send('hello');
-  response.set({'header': 'greeting Danilo', 'header_2': 'test header'}).send('hi Danilo!');
+// server.get('/', (request, response) => {
+//   // response.send('hello').status(404);
+//   // response.status(404).send('hello');
+//   // response
+//   //   .set({ header: 'greeting Danilo', header_2: 'test header' })
+//   //   .send('hi Danilo!');
+//   response.set('header', 'using html tags').send('<h1>Hi all!</h1>');
+// });
+
+// server.get('/', (request, response) => {
+//   const time = new Date().toLocaleTimeString();
+//   response.send(`<h1>Hello, it's ${time}</h1>`);
+// });
+
+// Visit http://localhost:3000/json and you should see a JSON object with a message property.
+server.get('/json', (request, response) => {
+  response.send({ message: 'Hello' });
 });
 
 const PORT = 3000;
