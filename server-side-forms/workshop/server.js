@@ -50,7 +50,7 @@ server.get('/add-dog', (req, res) => {
     <body>
       <h1>Add Dog!</h1>
         <form method='POST'>
-            <input id='name' name='input' />
+            <input id='name' name='name' />
             <input id='breed' name='breed' />
             <button>Submit</button>
         </form>
@@ -58,6 +58,16 @@ server.get('/add-dog', (req, res) => {
   </html>
   `;
   res.end(html);
+});
+
+const bodyParser = express.urlencoded({ extended: false });
+
+server.post('/add-dog', bodyParser, (req, res) => {
+  const newDog = req.body;
+  console.log(newDog);
+  const name = newDog.name.toLowerCase();
+  dogs[name] = newDog;
+  res.redirect('/');
 });
 
 const PORT = 3333;
