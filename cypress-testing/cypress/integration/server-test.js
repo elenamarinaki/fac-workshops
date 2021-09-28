@@ -5,5 +5,14 @@ it('can run a test', () => {
 
 it('index page with message appears', () => {
   cy.visit('/').contains('Welcome to my site');
-  // cy.title().should('eq', 'Welcome to my site');
+});
+
+it('working /about route', () => {
+  cy.visit('/about');
+  // testing the <title> tag
+  cy.title().should('eq', 'About this site');
+});
+
+it('working /sign-up route', () => {
+  cy.visit('/sign-up');
 });
