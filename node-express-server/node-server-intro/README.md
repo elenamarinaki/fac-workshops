@@ -54,3 +54,14 @@ server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
 1. Status code
 2. Headers: Express will automatically set some headers describing the response.
 3. Body
+
+### Dynamic route paths 🛣️
+
+- When we don't know in advance all the routes we need.
+
+```js
+server.get('/users/:name', (request, response) => {
+  const name = request.params.name;
+  response.send(`<h1>Hello ${name}</h1>`);
+});
+```
