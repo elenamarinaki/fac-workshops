@@ -20,8 +20,7 @@ server.get('/', (request, response) => {
       <li>
         <span>${dog.name}</span>
         <form action='/delete-dog' method='POST'>
-          <input type="hidden" name="dogName" value="pongo" />
-          <button>Delete</button>
+          <button name="dogName" value=${dog.name} aria-label="Delete ${dog.name}">Delete</button>
         </form>
       </li>
       `;
@@ -83,8 +82,8 @@ server.post('/add-dog', bodyParser, (req, res) => {
 });
 
 server.post('/delete-dog', bodyParser, (req, res) => {
-  const delDog = req.body.name.toLowerCase();
-  delete dog[delDog];
+  const nameToDelete = req.body.name.toLowerCase();
+  delete dogs[nameToDelete];
   res.redirect('/');
 });
 
