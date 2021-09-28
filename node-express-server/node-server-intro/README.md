@@ -48,3 +48,9 @@ server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
   ```
   node server.js
   ```
+
+### The response 📲
+
+1. Status code
+2. Headers: Express will automatically set some headers describing the response.
+3. Body
