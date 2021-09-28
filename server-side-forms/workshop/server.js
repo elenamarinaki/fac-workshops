@@ -1,0 +1,45 @@
+const express = require('express');
+const dogs = require('./dogs.js');
+
+const server = express();
+
+const dogsArray = Object.values(dogs);
+console.log(dogsArray);
+
+server.get('/', (request, response) => {
+  const input = request.query.input || '';
+
+  const dogsArray = Object.values(dogs);
+  let listItems = '';
+
+  for (const dog of dogsArray) {
+    const match = dog.name.toLowerCase().includes(input.toLowerCase());
+    if (!input || match) {
+      listItems += `<li>${dog.name}</li>`;
+    }
+  }
+
+  const dogList = `<ul>${listItems}</ul>`;
+
+  const html = ` <!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Dogs!</title>
+    </head>
+    <body>
+      <ul>${dogList}</ul>
+        <form>
+            <input name='input' />
+            <button>Submit</button>
+        </form>
+    </body>
+  </html>
+  `;
+  response.send(html);
+});
+
+server.get('/');
+
+const PORT = 3333;
+server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
