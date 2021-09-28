@@ -11,3 +11,11 @@ npm init -y
 npm install express
 code .
 ```
+
+### Create a server 💡
+
+```js
+const express = require('express');
+
+const server = express();
+```
