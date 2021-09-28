@@ -105,7 +105,7 @@ server.use(staticHandler);
 
 - The server will now handle requests to _http://localhost:3000/style.css_ and respond with the file contents. Note that there is no public in the final URL: Express serves the files from the root of the site.
 
-### `POST` requests 📮 
+### `POST` requests 📮
 
 ```js
 server.post('/submit', (request, response) => {
@@ -119,3 +119,22 @@ We can’t make a test POST request as easily in our browser, since that would r
 ```
 curl -X POST localhost:3000/submit
 ```
+
+#### Request body
+
+```
+curl -X POST localhost:3000/submit -d "name=elena"
+```
+
+- Middleware:
+
+```js
+const bodyParser = express.urlencoded();
+
+server.post('/submit', bodyParser, (request, response) => {
+  console.log(request.body);
+  response.send('thanks for submitting');
+});
+```
+
+This middleware will wait until all the submitted data has been received, then add a `body` property to the `request` object. We can then read this property in our handler.
