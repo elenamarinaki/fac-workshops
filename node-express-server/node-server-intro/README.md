@@ -104,3 +104,18 @@ server.use(staticHandler);
 ```
 
 - The server will now handle requests to _http://localhost:3000/style.css_ and respond with the file contents. Note that there is no public in the final URL: Express serves the files from the root of the site.
+
+### `POST` requests 📮 
+
+```js
+server.post('/submit', (request, response) => {
+  console.log('posted');
+  response.send('thanks for submitting');
+});
+```
+
+We can’t make a test POST request as easily in our browser, since that would require a form. Instead we can send a request from our terminal using the curl program.
+
+```
+curl -X POST localhost:3000/submit
+```
