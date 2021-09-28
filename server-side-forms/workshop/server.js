@@ -39,7 +39,26 @@ server.get('/', (request, response) => {
   response.send(html);
 });
 
-server.get('/');
+// adding new route GET /add-dog
+server.get('/add-dog', (req, res) => {
+  const html = ` <!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Dogs!</title>
+    </head>
+    <body>
+      <h1>Add Dog!</h1>
+        <form method='POST'>
+            <input id='name' name='input' />
+            <input id='breed' name='breed' />
+            <button>Submit</button>
+        </form>
+    </body>
+  </html>
+  `;
+  res.end(html);
+});
 
 const PORT = 3333;
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
