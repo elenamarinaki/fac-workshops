@@ -91,3 +91,16 @@ server.use(logger);
 ```
 
 So, when we load any page we’ll get a helpful log like `GET /`.
+
+### Static Files 🗄
+
+- We can have static files that don’t change for each request.
+- `express.static`
+
+```js
+const staticHandler = express.static('public');
+
+server.use(staticHandler);
+```
+
+- The server will now handle requests to _http://localhost:3000/style.css_ and respond with the file contents. Note that there is no public in the final URL: Express serves the files from the root of the site.

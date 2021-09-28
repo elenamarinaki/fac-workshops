@@ -52,9 +52,10 @@ server.get('/', logger, (request, response) => {
   response.send('<h1>Hello</h1>');
 });
 
-// const staticHandler = express.static('public');
+// STATIC FILES
+const staticHandler = express.static('public');
 
-// server.use(staticHandler);
+server.use(staticHandler);
 
 // server.post('/submit', (request, response) => {
 //   console.log('posted');
