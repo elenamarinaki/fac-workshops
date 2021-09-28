@@ -6,6 +6,7 @@ const server = express();
 const dogsArray = Object.values(dogs);
 console.log(dogsArray);
 
+// HOMEPAGE
 server.get('/', (request, response) => {
   const input = request.query.input || '';
 
@@ -15,7 +16,15 @@ server.get('/', (request, response) => {
   for (const dog of dogsArray) {
     const match = dog.name.toLowerCase().includes(input.toLowerCase());
     if (!input || match) {
-      listItems += `<li>${dog.name}</li>`;
+      listItems += `
+      <li>
+        <span>${dog.name}</span>
+        <form action='/delete-dog' method='POST'>
+          <input type="hidden" name="dogName" value="pongo" />
+          <button>Delete</button>
+        </form>
+      </li>
+      `;
     }
   }
 
@@ -28,11 +37,14 @@ server.get('/', (request, response) => {
       <title>Dogs!</title>
     </head>
     <body>
+      <h2>Search</h2>
       <ul>${dogList}</ul>
         <form>
             <input name='input' />
             <button>Submit</button>
         </form>
+
+        <h2><a href='/add-dog'> Add dog</a></h2>
     </body>
   </html>
   `;
@@ -67,6 +79,12 @@ server.post('/add-dog', bodyParser, (req, res) => {
   console.log(newDog);
   const name = newDog.name.toLowerCase();
   dogs[name] = newDog;
+  res.redirect('/');
+});
+
+server.post('/delete-dog', bodyParser, (req, res) => {
+  const delDog = req.body.name.toLowerCase();
+  delete dog[delDog];
   res.redirect('/');
 });
 
