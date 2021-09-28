@@ -67,5 +67,5 @@ server.post("/add-dog", bodyParser, (request, response) => {
   response.redirect("/");
 });
 
-const PORT = 3333;
+const PORT = 3000;
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
