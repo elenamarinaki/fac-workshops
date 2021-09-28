@@ -28,3 +28,7 @@ it('/sign-up page with a form containing email/password inputs', () => {
   cy.get('form').find('button').click();
   cy.url().should('include', '/welcome');
 });
+
+it('/welcome page with a title of “Thanks for joining”', () => {
+  cy.visit('/welcome').contains('Thanks for joining!');
+});

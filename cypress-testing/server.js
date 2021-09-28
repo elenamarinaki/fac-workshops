@@ -34,5 +34,9 @@ server.post('/sign-up', (req, res) => {
   res.redirect('/welcome');
 });
 
+server.get('/welcome', (req, res) => {
+  res.send(`<h2>Thanks for joining!</h2>`);
+});
+
 const PORT = 3333;
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
