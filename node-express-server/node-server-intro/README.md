@@ -65,3 +65,29 @@ server.get('/users/:name', (request, response) => {
   response.send(`<h1>Hello ${name}</h1>`);
 });
 ```
+
+### Middleware 🪢
+
+- Route handlers don't have to send a response.
+- They can receive a third argument: the `next` function.
+- It moves to the next handler registered for the route.
+- We can have multiple handler functions:
+
+```js
+function logger(request, response, next) {
+  console.log(request.method + ' ' + request.url);
+  next();
+}
+
+server.get('/', logger, (request, response) => {
+  response.send('<h1>Hello</h1>');
+});
+```
+
+then...
+
+```js
+server.use(logger);
+```
+
+So, when we load any page we’ll get a helpful log like `GET /`.

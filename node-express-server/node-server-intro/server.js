@@ -52,21 +52,21 @@ server.get('/', logger, (request, response) => {
   response.send('<h1>Hello</h1>');
 });
 
-const staticHandler = express.static('public');
+// const staticHandler = express.static('public');
 
-server.use(staticHandler);
+// server.use(staticHandler);
 
 // server.post('/submit', (request, response) => {
 //   console.log('posted');
 //   response.send('thanks for submitting');
 // });
 
-const bodyParser = express.urlencoded();
+// const bodyParser = express.urlencoded();
 
-server.post('/submit', bodyParser, (request, response) => {
-  console.log(request.body);
-  response.send('thanks for submitting');
-});
+// server.post('/submit', bodyParser, (request, response) => {
+//   console.log(request.body);
+//   response.send('thanks for submitting');
+// });
 
 const PORT = 3000;
 
