@@ -1,5 +1,7 @@
 # SQL Fundamentals 🧱
 
+[Workshop](https://learn.foundersandcoders.com/workshops/sql-intro/)
+
 - To create a database use:
 
 ```sql
@@ -89,4 +91,53 @@ SELECT first_name FROM users WHERE id = 1 OR id = 2;
 
 ```sql
 SELECT first_name FROM users WHERE id IN (1, 2);
+```
+
+---
+
+➼ _example 1_
+Using `SELECT` and `WHERE`, retrieve every column for all users who are older than 40.
+
+```sql
+SELECT * FROM users
+  WHERE age > 40;
+```
+
+➼ _example 2_
+Using `SELECT` and `WHERE`, retrieve the first, last name and location of the user who lives in Saxilby, UK and is older than 40.
+
+```sql
+SELECT first_name, last_name, location FROM users
+  WHERE location = 'Saxilby, UK' AND age > 40;
+```
+
+➼ _example 3_
+Using WHERE and IN, retrieve the user ID and text content columns for posts created by users with IDs of 2 or 3.
+
+```sql
+SELECT user_id, text_content FROM blog_posts
+  WHERE user_id IN (2, 3);
+```
+
+---
+
+### Creating and updating data
+
+`INSERT INTO`
+
+```sql
+INSERT INTO users (username, first_name) VALUES ('oliverjam', 'oli');
+```
+
+`UPDATE`
+
+```sql
+UPDATE users SET first_name = 'oliver' WHERE username = 'oliverjam';
+```
+
+`RETURNING`
+
+```sql
+INSERT INTO users (username, first_name) VALUES ('oliverjam', 'oli')
+  RETURNING id, username;
 ```
