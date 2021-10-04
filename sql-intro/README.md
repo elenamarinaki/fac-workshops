@@ -64,3 +64,29 @@ This value must match one in another table, like users(id). Used to link tables 
 ---
 
 ### Retrieving data
+
+`SELECT`
+
+```sql
+SELECT first_name FROM users;
+```
+
+`*` character to _select all columns_
+
+`WHERE`
+
+```sql
+SELECT first_name FROM users WHERE id = 1;
+```
+
+`AND`, `OR` and `NOT`
+
+```sql
+SELECT first_name FROM users WHERE id = 1 OR id = 2;
+```
+
+`IN`
+
+```sql
+SELECT first_name FROM users WHERE id IN (1, 2);
+```
