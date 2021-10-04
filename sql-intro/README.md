@@ -141,3 +141,23 @@ UPDATE users SET first_name = 'oliver' WHERE username = 'oliverjam';
 INSERT INTO users (username, first_name) VALUES ('oliverjam', 'oli')
   RETURNING id, username;
 ```
+
+---
+
+### Combining tables
+
+`INNER JOIN`
+
+```sql
+SELECT users.username, blog_posts.text_content
+  FROM users INNER JOIN blog_posts
+    ON users.id = blog_posts.user_id;
+```
+
+`LEFT JOIN` / `RIGHT JOIN`
+
+```sql
+SELECT users.username, blog_posts.text_content
+  FROM users LEFT JOIN blog_posts
+    ON users.id = blog_posts.user_id;
+```
