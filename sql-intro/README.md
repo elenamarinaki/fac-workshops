@@ -161,3 +161,28 @@ SELECT users.username, blog_posts.text_content
   FROM users LEFT JOIN blog_posts
     ON users.id = blog_posts.user_id;
 ```
+
+- _when joining more than 2 columns_
+
+```sql
+SELECT blog_posts.text_content, post_comments.text_content, users.username
+  FROM blog_posts
+  INNER JOIN post_comments ON blog_posts.id = post_comments.post_id
+  INNER JOIN users ON users.id = post_comments.user_id;
+```
+
+---
+
+### Sub queries
+
+This:
+
+```sql
+SELECT * FROM dogs WHERE owner = (SELECT name FROM humans WHERE id = 1)
+```
+
+is equivalent of:
+
+```sql
+SELECT * FROM dogs WHERE owner = 'oli';
+```
