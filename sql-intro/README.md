@@ -23,3 +23,12 @@ CREATE DATABASE blog_workshop;
 ```terminal
 \dt
 ```
+
+-----------------------------------------------
+
+## The Schema
+
+A “schema” represents all the different things in a database.
+1. What type of data in each column
+2. What columns in each table
+3. How tables relate to each other
