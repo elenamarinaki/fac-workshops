@@ -21,4 +21,10 @@ function deleteUser(user) {
     .then((result) => result.rows);
 }
 
-module.exports = { getUsers, createUser, deleteUser };
+function getPosts() {
+  return db
+    .query(/*sql*/ `SELECT blog_posts.text_content FROM blog_posts`)
+    .then((result) => result.rows);
+}
+
+module.exports = { getUsers, createUser, deleteUser, getPosts };
