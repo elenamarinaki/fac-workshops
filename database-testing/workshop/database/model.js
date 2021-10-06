@@ -14,4 +14,11 @@ function createUser(user) {
     .then((result) => result.rows);
 }
 
-module.exports = { getUsers, createUser };
+function deleteUser(user) {
+  const { id } = user;
+  return db
+    .query(/*sql*/ `DELETE FROM users WHERE id = $1`, [id])
+    .then((result) => result.rows);
+}
+
+module.exports = { getUsers, createUser, deleteUser };
