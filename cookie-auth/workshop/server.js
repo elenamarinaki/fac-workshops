@@ -35,10 +35,6 @@ server.get('/logout', (request, response) => {
   response.clearCookie('user'); //attention, we must clear the user!!!
   response.redirect('/');
 });
-// server.get('/remove', (request, response) => {
-//   response.clearCookie('hello');
-//   response.redirect('/');
-// });
 
 const PORT = process.env.PORT || 3000;
 
