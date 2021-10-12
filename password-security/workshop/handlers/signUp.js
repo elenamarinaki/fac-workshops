@@ -1,5 +1,5 @@
 const model = require('../database/db');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 
 function get(request, response) {
