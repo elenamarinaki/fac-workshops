@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn form validation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Create an account</h1>
+    <form novalidate>
+      <label for="email">Email <span aria-hidden="true">*</span></label>
+      <input required id="email" name="email" type="email" />
+
+      <label for="password">Password <span aria-hidden="true">*</span></label>
+      <div id="passwordRequirements">
+        The password contains at least one number, and is at least 8 characters
+        long
+      </div>
+      <input
+        required
+        id="password"
+        name="password"
+        type="password"
+        pattern=".*\d."
+        minlength="8"
+        aria-describedby="passwordRequirements"
+      />
+
+      <button>Sign up</button>
+    </form>
+    <script src="index.js"></script>
+  </body>
+</html>
