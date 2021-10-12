@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "elenasilmarilion@gmail.com",
+      "password": "0ce93c9606f0685bf60e051265891d256381f639d05c0aec67c84eec49d33cc1",
+      "id": 1633961096482
+    },
+    {
+      "email": "rhapsodyenmauve@gmail.com",
+      "password": "$2a$10$J0MJHeebEP7AU0Fk2PuuweF9ZqCH0oP/RuFNORCWbRV1Wlv2rshmm",
+      "id": 1633963708027
+    }
+  ]
+}
