@@ -32,7 +32,9 @@ server.get('/login', (request, response) => {
 });
 
 server.get('/logout', (request, response) => {
-  response.clearCookie('user'); //attention, we must clear the user!!!
+  const sid = request.signedCookies.sid;
+  delete sessions[sid];
+  response.clearCookie('sid');
   response.redirect('/');
 });
 

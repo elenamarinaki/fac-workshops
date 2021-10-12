@@ -44,7 +44,7 @@ set-cookie: userid=1234; Max-Age=60; HttpOnly; SameSite=Lax
 
 ### Stateless authentication
 
-- not keeping anything on the server => **stateless**
+- ***not keeping anything on the server*** => **stateless**
 - but very easy to fake :(
 
 ### Signed cookies
@@ -53,7 +53,7 @@ set-cookie: userid=1234; Max-Age=60; HttpOnly; SameSite=Lax
 - `hash` function: operation that takes a value and a secret and returns a `hash`. Only way to re-produce a value is to know the secret.
 - we are using this to `sign` our cookies.
 - hash function happens on the server
-- don't write your own has function!!
+- _don't write_ your own hash function!!
 
 ## Downsides to stateless auth
 
@@ -69,3 +69,16 @@ set-cookie: userid=1234; Max-Age=60; HttpOnly; SameSite=Lax
 
 - session ID is basically a password - so they must be difficult to guess!
 - they should be signed with a `hash`
+
+### Reading a cookie with `express` 🌪️
+
+- ```terminal
+  npm install cookie-parser
+  ```
+
+- _Middleware_
+
+```javascript
+const cookieParser = require('cookie-parser');
+server.use(cookieParser());
+```
