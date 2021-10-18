@@ -2,8 +2,11 @@ const crypto = require('crypto');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { response } = require('express');
+const checkAuth = require('./middleware/checkAuth');
+const userSession = require('./middleware/userSession');
+const handleErrors = require('./middleware/handleErrors');
 
-const PORT = process.env.PORT || 3000;
+let sessions = require('./sessions.js');
 
 // this should normally be hidden in a env var
 const SECRET = 'nkA$SD89&&282hd';
@@ -13,41 +16,7 @@ const server = express();
 server.use(cookieParser(SECRET));
 server.use(express.urlencoded({ extended: false }));
 
-server.use((req, res, next) => {
-  const sid = req.signedCookies.sid;
-  const user = sessions[sid];
-  if (user) {
-    req.session = user;
-    console.log(req.session);
-  }
-  next();
-});
-
-function checkAuth(req, res, next) {
-  const user = req.session;
-  if (!user) {
-    res
-      .status(401)
-      .send(
-        /*html*/ `<h1>No authorization, please login</h1> <a href='/log-in'>Login</a>`
-      );
-  }
-  next();
-}
-// server.use(checkAuth);
-
-function handleErrors(error, req, res, next) {
-  console.error(error);
-  const status = error.status || 500;
-  res
-    .status(status)
-    .send(
-      /*html*/ `<h1>This is a terrible error! You should be ashamed of yourself!!</h1>`
-    );
-}
-
-// this should really be in a database
-let sessions = {};
+server.use(userSession);
 
 server.get('/', (req, res) => {
   const user = req.session;
@@ -112,5 +81,7 @@ server.get('/error', (req, res, next) => {
 });
 
 server.use(handleErrors);
+
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
