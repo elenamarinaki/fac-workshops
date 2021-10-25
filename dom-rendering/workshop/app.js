@@ -1,28 +1,24 @@
 import dogs from './dogs.js';
+import createEl from './create-element.js';
 
-function createEl(tag, props, ...children) {
-  const element = document.createElement(tag);
-  for (const prop in props) {
-    element[prop] = props[prop];
-  }
-  element.append(...children);
-  return element;
-}
-
+// ------------------------------------------- CHALLENGE 2
 // PROPS = ATTRIBUTES
-const elements = dogs.map((dog) => {
-  const h2 = createEl('h2', {}, dog.name);
+// const elements = dogs.map((dog) => {
+//   const h2 = createEl('h2', {}, dog.name);
 
-  const img = createEl('img', {
-    src: dog.image,
-  });
+//   const img = createEl('img', {
+//     src: dog.image,
+//   });
 
-  const li = createEl('li', { className: 'card' }, h2, img);
+//   const li = createEl('li', { className: 'card' }, h2, img);
 
-  return li;
-});
+//   return li;
+// });
 
-const title = 
+// const title = createEl('h1', {}, 'Dogs list');
+// const ul = createEl('ul', {}, ...elements);
+
+// ------------------------------------------- CHALLENGE 1
 
 // const elements = dogs.map((dog) => {
 //   const h2 = document.createElement('h2');
@@ -43,4 +39,22 @@ const title =
 // const ul = document.createElement('ul');
 // ul.append(...elements);
 
-document.querySelector('#app').append(title, ul);
+// document.querySelector('#app').append(title, ul);
+
+// ------------------------------------------- CHALLENGE 3
+
+const elements = dogs.map((dog) => {
+  return /*html*/ `
+        <li class='card'>
+            <h2>${dog.name}</h2>
+            <img src="${dog.image}" alt="" />
+        </li>
+    `;
+});
+
+document.querySelector('#app').innerHTML = /*html*/ `
+<h1>Dogs list</h1>
+<ul>
+    ${elements.join('\n')}
+</ul>
+`;
