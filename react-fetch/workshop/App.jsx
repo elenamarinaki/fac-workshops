@@ -3,21 +3,26 @@ import Profile from './components/Profile';
 import SearchUser from './components/SearchUser';
 
 function App() {
-  const [user, setUser] = React.useState('elenamarinaki');
+  const [name, setName] = React.useState('elenamarinaki');
   return (
     <main>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setUser(e.target.username.value);
+          console.log(e.target.username.value);
+          setName(e.target.username.value);
         }}
       >
-        <SearchUser user={user} setUser={setUser} />
+        <input
+          type='search'
+          aria-label='Search users'
+          placeholder='Search users'
+          name='username'
+        />
+        {/* <SearchUser name={name} setName={setName} /> */}
       </form>
-      <Profile user={user} setUser={setUser} />
-      {/* <Profile username='cemalokten' />
-      <Profile username='elenamarinaki' />
-      <Profile username='cerealenjoyer' /> */}
+      <Profile name={name} />
+      {/* <Profile username='elenamarinaki' /> */}
     </main>
   );
 }

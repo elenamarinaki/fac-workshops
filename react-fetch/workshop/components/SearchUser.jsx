@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchUser(props) {
+function SearchUser() {
   return <input type='search' name='username' />;
 }
 

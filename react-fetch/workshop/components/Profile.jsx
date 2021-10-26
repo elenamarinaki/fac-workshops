@@ -1,22 +1,22 @@
 import React from 'react';
 
-function Profile({ user, setUser }) {
-  //   const [userData, setUserData] = React.useState();
+function Profile({ name}) {
+  const [userData, setUserData] = React.useState();
 
   React.useEffect(() => {
-    fetch(`https://api.github.com/users/${user}`)
+    fetch(`https://api.github.com/users/${name}`)
       .then((res) => res.json())
-      .then((data) => setUser(data));
-  }, []);
+      .then((data) => setUserData(data));
+  }, [name]);
 
-  if (!user) {
+  if (!userData) {
     return <div>Loading...</div>;
   } else {
     return (
       <div>
-        <h1>{user.name}</h1>
-        <p>{user.id}</p>
-        <img src={user.avatar_url} />
+        <h1>{userData.name}</h1>
+        <p>{userData.id}</p>
+        <img src={userData.avatar_url} />
       </div>
     );
   }
