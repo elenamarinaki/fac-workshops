@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <title>Component Proponent | FAC React</title>
+
+  <body>
+    <!-- These scripts will make React and ReactDOM globally available. -->
+    <script src="https://unpkg.com/react@%5E17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@%5E17/umd/react-dom.development.js"></script>
+    <!-- This will let us write JSX and ES6 in a script tag with a special type of "text/babel" -->
+    <script src="https://unpkg.com/babel-standalone@%5E6/babel.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const root = document.getElementById('root');
+
+      function Title(props) {
+        return <h1>{props.children}</h1>;
+      }
+
+      function Page(props) {
+        return <div className='page'>{props.children}</div>;
+      }
+
+      function App() {
+        return (
+          <Page>
+            <Title>Hello world!</Title>
+            <Card
+              title='Tasty Burger'
+              image='https://user-images.githubusercontent.com/9408641/58386359-a0ebc880-7ff6-11e9-8214-48b9206aa711.png'
+            >
+              Welcome to my page
+            </Card>
+          </Page>
+        );
+      }
+
+      function Card(props) {
+        return (
+          <React.Fragment>
+            <h2>{props.title}</h2>
+            <img src={props.image} />
+            <p>{props.children}</p>
+          </React.Fragment>
+        );
+      }
+
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
