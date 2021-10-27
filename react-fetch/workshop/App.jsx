@@ -9,15 +9,15 @@ function App() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(e.target.value);
-          setName(e.target.value);
+          console.log(e.target.username.value);
+          setName(e.target.username.value);
         }}
       >
         <input
           type='search'
           aria-label='Search users'
           placeholder='Search users'
-          value={name}
+          name='username'
         />
         {/* <SearchUser name={name} setName={setName} /> */}
       </form>
