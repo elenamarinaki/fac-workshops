@@ -1,6 +1,7 @@
 import React from 'react';
+import ReposList from './ReposList';
 
-function Profile({ name}) {
+function Profile({ name }) {
   const [userData, setUserData] = React.useState();
 
   React.useEffect(() => {
@@ -17,6 +18,8 @@ function Profile({ name}) {
         <h1>{userData.name}</h1>
         <p>{userData.id}</p>
         <img src={userData.avatar_url} />
+        <h2>Repos</h2>
+        <ReposList url={userData.repos_url} />
       </div>
     );
   }
